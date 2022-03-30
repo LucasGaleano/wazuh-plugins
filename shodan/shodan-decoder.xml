@@ -1,0 +1,27 @@
+<decoder name="shodan-client">
+  <program_name>^shodan-client</program_name>
+</decoder>
+
+
+<decoder name="shodan-client-port">
+  <parent>shodan-client</parent>
+  <regex>type=(\S+) hostname=(\S+) ip=(\S+) port=(\S+) protocol=(\S+) data=(\.*)</regex>
+  <order>status, dstuser, dstip, dstport, protocol, data</order>
+</decoder>
+
+<decoder name="shodan-client-port">
+  <parent>shodan-client</parent>
+  <regex>type=(\S+) hostname=(\S+) ip=(\S+) port=(\S+) protocol=(\S+) CVE=(\S+) cvss=(\S+) verified=(\S+) summary=(\.*)</regex>
+  <order>status, dstuser, dstip, dstport, protocol, vuln.cve, vuln.cvss, vuln.verified, vuln.summary</order>
+</decoder>
+
+<!--<decoder name="shodan-client-port">-->
+<!--  <parent>shodan-client</parent>-->
+<!--  <regex>type=(\S+) hostname=(\S+) ip=(\S+) port=(\S+) protocol=(\S+)</regex>-->
+<!--  <order>status, dstuser, dstip, dstport, protocol</order>-->
+<!--</decoder>-->
+
+
+#Nov 23 19:34:56 server shodan-client: type=Vulnerability  hostname={hostname} ip={ip} port={port} protocol=tcp CVE={key} cvss={data["cvss"]} verified={str(data["verified"])} summary={data["summary"]}
+#Nov 23 19:34:56 server shodan-client: type=New hostname=test.localhost.com ip=10.10.10.10 port=80 protocol=tcp data=HTTP/1.1 404 Not Found
+#Nov 23 19:34:56 server shodan-client: Starting shodan client

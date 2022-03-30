@@ -1,0 +1,68 @@
+https://developer.okta.com/docs/reference/api/system-log/#ipaddress-object
+
+<group name="okta">
+
+<rule id="103000" level="0">
+   <decoded_as>json</decoded_as>
+   <field name="published">\.+</field>
+   <field name="severity">\.+</field>
+   <field name="eventType">\.+</field>
+   <description>Okta messages.</description>
+</rule>
+
+
+<rule id="103001" level="8">
+   <if_sid>103000</if_sid>
+   <field name="eventType">\.*create\.*</field>
+   <description>$(displayMessage) - $(outcome.result)</description>
+</rule>
+
+<rule id="103002" level="8">
+   <if_sid>103000</if_sid>
+   <field name="eventType">\.*add\.*</field>
+   <description>$(displayMessage) - $(outcome.result)</description>
+</rule>
+
+<rule id="103003" level="8">
+   <if_sid>103000</if_sid>
+   <field name="eventType">\.*delete\.*</field>
+   <description>$(displayMessage) - $(outcome.result)</description>
+</rule>
+
+<rule id="103004" level="8">
+   <if_sid>103000</if_sid>
+   <field name="eventType">\.*import\.*</field>
+   <description>$(displayMessage) - $(outcome.result)</description>
+</rule>
+
+<rule id="103005" level="8">
+   <if_sid>103000</if_sid>
+   <field name="eventType">\.*new\.*</field>
+   <description>$(displayMessage) - $(outcome.result)</description>
+</rule>
+
+<rule id="103007" level="8">
+   <if_sid>103000</if_sid>
+   <field name="eventType">\.*admin\.*</field>
+   <description>$(displayMessage) - $(outcome.result)</description>
+</rule>
+
+<rule id="103008" level="3">
+   <if_sid>103000</if_sid>
+   <field name="severity">^INFO$</field>
+   <description>$(displayMessage) - $(outcome.result)</description>
+</rule>
+
+<rule id="103009" level="5">
+   <if_sid>103000</if_sid>
+   <field name="severity">^WARN$</field>
+   <description>$(displayMessage) - $(outcome.result)</description>
+</rule>
+
+<rule id="103010" level="8">
+   <if_sid>103000</if_sid>
+   <field name="severity">^ERROR$</field>
+   <description>$(displayMessage) - $(outcome.result)</description>
+</rule>
+
+</group>

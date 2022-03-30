@@ -1,0 +1,22 @@
+<group name="cert-validate">
+
+    <rule id="105000" level="3">
+      <program_name>cert-validate</program_name>
+      <description>cert-validate messages</description>
+    </rule>
+
+    <rule id="105001" level="12">
+      <if_sid>105000</if_sid>>
+      <program_name>cert-validate</program_name>
+      <regex>Verification error\.*</regex>
+      <description>Invalid Certificate</description>
+    </rule>
+    
+    <rule id="105002" level="3">
+      <if_sid>105000</if_sid>>
+      <program_name>cert-validate</program_name>
+      <regex>Verification: OK\.*</regex>
+      <description>Valid Certificate</description>
+    </rule>
+
+</group>

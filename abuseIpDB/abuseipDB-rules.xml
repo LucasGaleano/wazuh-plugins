@@ -1,0 +1,74 @@
+<!--
+
+#block with no ip reported
+{"networkAddress": "10.10.10.10", "netmask": "255.255.255.0", "minAddress": "10.10.10.1", "maxAddress": "10.10.10.254", "numPossibleHosts": 254, "addressSpaceDesc": "Internet", "reportedAddress": [], "app": "abuseipDB"}
+
+
+#block with ip reported
+{"networkAddress": "10.10.10.10", "netmask": "255.255.255.0", "minAddress": "10.10.10.1", "maxAddress": "10.10.10.254", "numPossibleHosts": 254, "addressSpaceDesc": "Internet", "reportedAddress": [{"ipAddress": "185.40.106.117", "numReports": 1, "mostRecentReport": "2022-01-21T01:48:38+00:00", "abuseConfidenceScore": 4, "countryCode": "AR"}], "app": "abuseipDB"}
+
+#IP with ip reputation
+{"ipAddress": "10.10.10.10", "isPublic": true, "ipVersion": 4, "isWhitelisted": false, "abuseConfidenceScore": 4, "countryCode": "AR", "usageType": "Data Center/Web Hosting/Transit", "isp": "Testing Inc.", "domain": "testing.co", "hostnames": [], "totalReports": 1, "numDistinctUsers": 1, "lastReportedAt": "2022-01-21T01:48:38+00:00", "app": "abuseipDB"}
+
+
+-->
+
+<group name="abuseipDB">
+
+<rule id="101108" level="3">
+   <decoded_as>json</decoded_as>
+   <field name="app">\.+</field>
+   <description>abuseipDB messages.</description>
+</rule>
+
+<rule id="101100" level="3">
+   <if_sid>101108</if_sid>
+   <field name="abuseConfidenceScore">\.+</field>
+   <field name="ipAddress">\.+</field>
+   <description>abuseipDB IP check messages.</description>
+</rule>
+
+<rule id="101101" level="3">
+   <if_sid>101108</if_sid>
+   <field name="abuseConfidenceScore">0</field>
+   <description>Reported IP: $(ipAddress) - No reputation</description>
+</rule>
+
+<rule id="101102" level="12">
+   <if_sid>101100</if_sid>
+   <field name="abuseConfidenceScore">\.+</field>
+   <description>Reported IP: $(ipAddress) - Reputation score $(abuseConfidenceScore)</description>
+</rule>
+
+<rule id="101103" level="3">
+   <if_sid>101108</if_sid>
+   <field name="reportedAddress">\.+</field>
+   <description>abuseipDB block messages.</description>
+</rule>
+
+<!--<rule id="101104" level="9">-->
+<!--   <if_sid>101103</if_sid>-->
+<!--   <field name="reportedAddress">\p\.+\p</field>-->
+<!--   <field name="reportedAddress.abuseConfidenceScore">\.+</field>-->
+<!--   <description>Block Checked $(networkAddress), mask: $(netmask) - With reputation IPs</description>-->
+<!--</rule>-->
+
+<rule id="101105" level="3">
+   <if_sid>101103</if_sid>
+   <field name="reportedAddress">\.+</field>
+   <description>Block Checked $(networkAddress), mask: $(netmask)</description>
+</rule>
+
+
+<rule id="101106" level="3">
+   <if_sid>101108</if_sid>
+   <field name="detail">\.+</field>
+   <description>abuseipDB errors messages.</description>
+</rule>
+
+<rule id="101107" level="3">
+   <if_sid>101106</if_sid>
+   <description>Error: $(detail)</description>
+</rule>
+
+</group>

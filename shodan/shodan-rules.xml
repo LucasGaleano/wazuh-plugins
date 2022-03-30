@@ -1,0 +1,33 @@
+<group name="shodan-client">
+
+    <rule id="100010" level="3">
+      <program_name>shodan-client</program_name>
+      <status>Common</status>
+      <description>Common port found</description>
+    </rule>
+
+    <rule id="100011" level="7">
+      <program_name>shodan-client</program_name>
+      <status>Uncommon</status>
+      <description>Uncommon port found</description>
+    </rule>
+    
+    <rule id="100012" level="9">
+      <program_name>shodan-client</program_name>
+      <status>New</status>
+      <description>New port found</description>
+    </rule>
+
+    <rule id="100013" level="3">
+        <program_name>shodan-client</program_name>
+        <match>^Starting</match>
+        <description>Shodan monitoring started</description>
+    </rule>
+    
+    <rule id="100015" level="9">
+        <program_name>shodan-client</program_name>
+        <status>Vulnerability</status>
+        <description>Vulnerability found ${vuln.cve}</description>
+    </rule>
+
+</group>

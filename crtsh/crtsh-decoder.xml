@@ -1,0 +1,24 @@
+<decoder name="crtsh-client">
+  <program_name>^crtsh-client</program_name>
+</decoder>
+
+<decoder name="crtsh-client">
+  <parent>crtsh-client</parent>
+  <regex>ID="(\.+)" Logged At="(\.+)" Not Before="(\.+)" Not After="(\.+)" Common Name="(\.+)" Issuer Name="(\.+)" Message="(\.+)"</regex>
+  <order>id, loggedAt, notBefore, notAfter, commonName, issuerName, message</order>
+</decoder>
+
+<!--<decoder name="crtsh-client">-->
+<!--  <parent>crtsh-client</parent>-->
+<!--  <regex>ID="(\.+)" Logged At="(\.+)"</regex>-->
+<!--  <order>cert.id, cert.loggedAt</order>-->
+<!--</decoder>-->
+
+<!--<decoder name="crtsh-client">-->
+<!--  <parent>crtsh-client</parent>-->
+<!--  <regex>ID="(\.+)"</regex>-->
+<!--  <order>cert.id</order>-->
+<!--</decoder>-->
+
+#Jan 24 11:14:18 server crtsh-client[10936]: ID="2416018281" Logged At="2020-01-30 07:19:54.767000" Not Before="2020-01-30 06:19:54" Not After="2020-04-29 06:19:54" Common Name="test.localhost.net" Issuer Name="C=US, O=Let's Encrypt, CN=Let's Encrypt Authority X3" Message="Domain certification expired"
+#Jan 24 11:14:18 server crtsh-client[10936]: ID="3886172828" Logged At="2021-01-06 13:45:37.206000" Not Before="2021-01-06 00:00:00" Not After="2022-02-06 23:59:59" Common Name="test.localhost.net" Issuer Name="C=US, O=DigiCert Inc, CN=RapidSSL TLS DV RSA Mixed SHA256 2020 CA-1" Message="Domain certification about to expired"

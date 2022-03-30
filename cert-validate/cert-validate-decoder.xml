@@ -1,0 +1,10 @@
+<decoder name="cert-validate">
+  <program_name>^cert-validate</program_name>
+</decoder>
+
+
+<decoder name="cert-validate-status">
+  <parent>cert-validate</parent>
+  <regex>(\S+):(\S+) (\.*)</regex>
+  <order>dstip, dstport, data</order>
+</decoder>
