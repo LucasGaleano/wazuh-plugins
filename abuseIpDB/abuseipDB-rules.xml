@@ -17,7 +17,7 @@
 
 <rule id="101108" level="3">
    <decoded_as>json</decoded_as>
-   <field name="app">\.+</field>
+   <field name="app">abuseipDB</field>
    <description>abuseipDB messages.</description>
 </rule>
 
