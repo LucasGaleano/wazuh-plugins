@@ -34,9 +34,15 @@
    <description>Reported IP: $(ipAddress) - No reputation</description>
 </rule>
 
-<rule id="101102" level="12">
+<rule id="101102" level="6">
    <if_sid>101100</if_sid>
-   <field name="abuseConfidenceScore">\.+</field>
+   <field name="abuseConfidenceScore">\d|1\d</field>
+   <description>Reported IP: $(ipAddress) - Reputation score $(abuseConfidenceScore)</description>
+</rule>
+
+<rule id="101104" level="12">
+   <if_sid>101100</if_sid>
+   <field name="abuseConfidenceScore">2\d|3\d|4\d|5\d|6\d|7\d|8\d|9\d|100</field>
    <description>Reported IP: $(ipAddress) - Reputation score $(abuseConfidenceScore)</description>
 </rule>
 
@@ -46,12 +52,6 @@
    <description>abuseipDB block messages.</description>
 </rule>
 
-<!--<rule id="101104" level="9">-->
-<!--   <if_sid>101103</if_sid>-->
-<!--   <field name="reportedAddress">\p\.+\p</field>-->
-<!--   <field name="reportedAddress.abuseConfidenceScore">\.+</field>-->
-<!--   <description>Block Checked $(networkAddress), mask: $(netmask) - With reputation IPs</description>-->
-<!--</rule>-->
 
 <rule id="101105" level="3">
    <if_sid>101103</if_sid>
