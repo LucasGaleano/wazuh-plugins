@@ -10,14 +10,14 @@
 <rule id="106101" level="12">
    <if_sid>106100</if_sid>
    <field name="type">\.+</field>
-   <description>$(description) - Host:$(ip):$(port)</description>  
+   <description>$(description) - Host:$(srcip):$(srcport)</description>  
 </rule>
 
 
 <rule id="106102" level="3">
    <if_sid>106101</if_sid>
    <field name="type">device_id</field>
-   <description>$(description) - Host:$(ip):$(port)</description>
+   <description>$(description) - Host:$(srcip):$(srcport)</description>
 </rule>
 
 
