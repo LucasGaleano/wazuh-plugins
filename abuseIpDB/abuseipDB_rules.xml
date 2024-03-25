@@ -16,7 +16,7 @@
 <group name="abuseipDB">
 
 <rule id="101108" level="3">
-   <decoded_as>json</decoded_as>
+   <decoded_as>raw_json</decoded_as>
    <field name="app">abuseipDB</field>
    <description>abuseipDB messages.</description>
 </rule>
