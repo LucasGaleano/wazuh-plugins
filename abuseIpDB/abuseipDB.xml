@@ -1,0 +1,10 @@
+<decoder name="raw_json">
+    <program_name>docker/abuseipdb</program_name>
+    <plugin_decoder>JSON_Decoder</plugin_decoder>
+</decoder>
+
+
+
+<!--
+Mar 25 12:51:03 siem-feeds docker/abuseipdb[846]: {"networkAddress": "1.1.1.1", "netmask": "255.255.255.0", "minAddress": "1.1.1.1", "maxAddress": "1.1.1.1", "numPossibleHosts": 256, "addressSpaceDesc": "Internet", "reportedAddress": [], "app": "abuseipDB", "timestamp": "2023-03-15T12:51:03.171608"}
+-->
