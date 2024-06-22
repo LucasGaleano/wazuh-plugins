@@ -1,0 +1,48 @@
+<group name="nmap">
+
+<rule id="106000" level="0">
+   <decoded_as>json</decoded_as>
+   <field name="app">Nmap</field>
+   <description>Nmap messages.</description>
+</rule>
+
+<rule id="106001" level="3">
+   <if_sid>106000</if_sid>
+   <field name="message">Nmap is done</field>
+   <description>$(message) - duration $(duration)</description>
+</rule>
+
+<rule id="106002" level="3">
+   <if_sid>106000</if_sid>
+   <field name="message">Starting Nmap</field>
+   <description>$(message)</description>
+</rule>
+
+<rule id="106003" level="5">
+   <if_sid>106000</if_sid>
+   <field name="type">new</field>
+   <description>$(message) - New service found</description>
+</rule>
+
+<rule id="106004" level="3">
+   <if_sid>106000</if_sid>
+   <field name="type">\.*</field>
+   <description>$(message) - Service found</description>
+</rule>
+
+<rule id="106005" level="3">
+   <if_sid>106000</if_sid>
+   <field name="message">\.*</field>
+   <description>$(message)</description>
+</rule>
+
+</group>
+
+<!--
+{"message": "Starting Nmap", "timestamp": "2022-04-19 11:53:11.161289", "app":"Nmap"}
+{"message": "Nmap is done", "duration": "0:04:44", "timestamp": "2022-04-19 11:57:55.668708", "app":"Nmap"}
+
+
+{"state": "open", "reason": "syn-ack", "name": "http", "product": "nginx", "version": "1.18.0", "extrainfo": "Ubuntu", "conf": "10", "cpe": "cpe:/o:linux:linux_kernel", 
+"port": "443", "host": "123.123.2.123", "protocol": "tcp", "type": "new", "message": "123.123.2.123 443/tcp", "timestamp": "2022-04-19 02:43:30.311139", "app":"Nmap"}
+-->
