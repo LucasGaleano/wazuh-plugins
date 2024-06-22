@@ -1,0 +1,13 @@
+<decoder name="nagios">
+  <program_name>^docker/nagios4</program_name>
+</decoder>
+
+
+<decoder name="nagios">
+  <parent>nagios</parent>
+  <regex>nagios: HOST ALERT: (\S+);(\S+);(\S+);(\S+);(\.+)</regex>
+  <order>system_name, status, type, checks, data</order>
+</decoder>
+
+<!--Apr 26 16:36:11 siem-test docker/nagios4[1961890]: nagios: HOST ALERT: test1-ens21;UP;HARD;1;PING OK - Packet loss = 0%, RTA = 50.06 ms-->
+<!--Apr 26 16:36:11 siem-test docker/nagios4[1961890]: nagios: HOST ALERT: test1-ens19;DOWN;HARD;10;(Host check timed out after 30.01 seconds)-->
