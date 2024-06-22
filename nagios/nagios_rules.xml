@@ -1,0 +1,18 @@
+<group name="nagios">
+
+<rule id="107000" level="0">
+   <program_name>docker/nagios4</program_name>
+   <description>Nagios messages.</description>
+</rule>
+
+<rule id="107001" level="12">
+   <if_sid>107000</if_sid>
+   <regex>HOST ALERT</regex>
+   <field name="type">HARD</field>
+   <description>$(system_name): Service is $(status)</description>
+</rule>
+
+</group>
+
+<!--Apr 26 16:36:11 siem-feeds docker/nagios4[1961890]: nagios: HOST ALERT: test-ens21;UP;HARD;1;PING OK - Packet loss = 0%, RTA = 50.06 ms-->
+<!--Apr 26 16:36:11 siem-feeds docker/nagios4[1961890]: nagios: HOST ALERT: test-ens19;DOWN;HARD;10;(Host check timed out after 30.01 seconds)-->
